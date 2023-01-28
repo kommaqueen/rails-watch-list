@@ -1,0 +1,11 @@
+<h1>Add a Watch List Entry</h1>
+<div class="container">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to "Go back to List", list_path(@list)%>
+  <%= link_to "All Lists", lists_path%>
+</div>

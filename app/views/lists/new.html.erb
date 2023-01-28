@@ -1,0 +1,9 @@
+<h1>Add a New Watch List</h1>
+<div class="container">
+  <%= simple_form_for(@list) do |l| %>
+    <%= l.input :name %>
+    <%= l.submit %>
+  <% end %>
+
+<%= link_to "All Lists", lists_path %>
+</div>

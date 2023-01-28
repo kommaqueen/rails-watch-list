@@ -1,0 +1,46 @@
+<h1><%= @list.name %></h1>
+
+<div class="container">
+
+<% @list.bookmarks.each do |b| %>
+  <div class="card-product">
+    <img src="https://image.tmdb.org/t/p/original<%= b.movie.poster_url %>" height="500px" />
+    <div class="card-product-infos">
+      <h2><%= b.movie.title %></h2>
+      <p><%= b.movie.overview %></p>
+      <% if b.comment %>
+      <p><%= b.comment %></p>
+      <% else %>
+      <p>No comments</p>
+      <% end %>
+      <%= link_to "Delete", bookmark_path(b), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </div>
+  </div>
+<% end %>
+
+
+<%# add a movie %>
+<%= link_to "Add a watch list entry?", new_list_bookmark_path(@list) %>
+<%# want to have this hide until clicked %>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.association :movie %>
+  <%= f.input :comment %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "All Lists", lists_path%>
+
+<% if @reviews.empty? %>
+<h2> No Reviews</h2>
+<% else %>
+<% @reviews.each do |r| %>
+  <p><%= r.comment %></p>
+  <p><%= r.rating %></p>
+  <% end %>
+<% end %>
+
+<%= link_to "Add a review", new_list_review_path(@list)%>
+
+</div>
+<%# # show the movies %>
+<%# # show the bookmarks for each movie %>

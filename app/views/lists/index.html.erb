@@ -1,0 +1,13 @@
+<h1>Watch Lists</h1>
+
+<%# I want to view all of my lists %>
+
+<% if @lists.empty? %>
+<p>No lists. <%= link_to "Make one?", new_list_path %></p>
+<% else %>
+  <% @lists.each do |l| %>
+  <h2><%= link_to l.name, list_path(l) %></h2>
+  <% end %>
+<% end %>
+
+<%= link_to "Create a new Watch List", new_list_path  %>

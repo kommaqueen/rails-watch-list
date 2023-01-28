@@ -1,0 +1,11 @@
+<h1>Add a Review to <%= @list.name %>!</h1>
+<div class="container">
+  <%= simple_form_for [@list, @review] do |f| %>
+    <%= f.input :rating, collection: 1..10 %>
+    <%= f.input :comment %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to "Go back to List", list_path(@list)%>
+  <%= link_to "All Lists", lists_path%>
+</div>
