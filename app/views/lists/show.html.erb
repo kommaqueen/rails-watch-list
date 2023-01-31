@@ -2,6 +2,12 @@
 
 <div class="container">
 
+<% if @list.photo.attached? %>
+  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <p>Upload an image pls</p>
+<% end %>
+
 <% @list.bookmarks.each do |b| %>
   <div class="card-product">
     <img src="https://image.tmdb.org/t/p/original<%= b.movie.poster_url %>" height="500px" />
@@ -20,7 +26,7 @@
 
 
 <%# add a movie %>
-<%= link_to "Add a watch list entry?", new_list_bookmark_path(@list) %>
+<%= link_to "Add a new watch list entry", new_list_bookmark_path(@list) %>
 <%# want to have this hide until clicked %>
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.association :movie %>
