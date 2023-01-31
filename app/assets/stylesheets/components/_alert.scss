@@ -4,3 +4,17 @@
   right: 16px;
   z-index: 1000;
 }
+
+.btn-ghost {
+  color: #D43A4E;
+  border: 1px solid #D43A4E;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover {
+  color: black;
+  border-color: black;
+}

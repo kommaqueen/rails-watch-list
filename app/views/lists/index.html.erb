@@ -1,18 +1,31 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://rare-gallery.com/uploads/posts/5372482-seats-seating-red-red-chairs-cinema-room-cinema-cinema-seats-seat-theatre-theater-chair-dark-movie-room-darkness-dark-room-sofa-velvet-chairs-repetition-repetitive-creative-commons-images.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "cinemaseats.jpg" %>);">
   <div class="container">
     <h1>Deanna's Watch List Database</h1>
   </div>
 </div>
 
-<div class="container">
+<div class="container padding-cushion-18">
+  <%= link_to "Create a new Watch List", new_list_path , class: "btn btn-ghost" %>
+</div>
+
+<div class="container padding-cushion-18" id="list_index">
   <% if @lists.empty? %>
   <p>No lists. <%= link_to "Make one?", new_list_path %></p>
   <% else %>
     <% @lists.each do |l| %>
-    <h2><%= link_to l.name, list_path(l) %></h2>
+      <div class="card-trip">
+        <% if l.photo.attached? %>
+          <%= cl_image_tag l.photo.key, crop: :fill %>
+        <% else %>
+          <%= image_tag "oscars.jpeg" %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to l.name, list_path(l) %></h2>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
-
-  <%= link_to "Create a new Watch List", new_list_path  %>
 </div>
